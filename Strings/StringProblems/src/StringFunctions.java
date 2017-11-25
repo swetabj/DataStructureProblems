@@ -1,4 +1,4 @@
-import java.util.Arrays;
+import java.util.*;
 
 
 public class StringFunctions {
@@ -23,4 +23,31 @@ public class StringFunctions {
 		Arrays.sort(c);
 		return String.valueOf(c);
 	}
+	
+	/*Implement an algorithm to determine if a string has all unique characters. */
+	public Boolean uniqueCharInStringUsingHasMap(String s){
+		
+		HashSet<String> set=new HashSet<String>();  
+		
+		for(int i=0;i<s.length();i++) {
+			if(set.contains(s.substring(i, i+1))){
+				System.out.println("Given String doesnot have unique characters");
+				return false;
+			}
+			else {
+				set.add(s.substring(i, i+1));
+			}
+		}
+		
+		/*To parse through the set
+		Iterator<String> itr = set.iterator();
+		while(itr.hasNext()) {
+			System.out.println(itr.next());
+		}
+		*/
+		
+		System.out.println("Given String have unique characters");
+		return true;
+	}
+	
 }
