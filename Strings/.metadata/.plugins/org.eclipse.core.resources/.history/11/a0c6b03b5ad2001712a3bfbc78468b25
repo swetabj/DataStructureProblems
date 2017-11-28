@@ -1,0 +1,131 @@
+import java.util.*;
+
+
+public class StringFunctions {
+
+	/*Implement an algorithm to determine if a string has all unique characters. What if you cannot
+	use additional data structures? */
+	public Boolean uniqueCharInString(String s) {
+		s = stringSorting(s);
+
+		for(int i=0;i<s.length()-1;i++) {
+			if(s.charAt(i) == s.charAt(i+1)) {
+				System.out.println("Given String doesnot have unique characters");
+				return false;
+			}
+		}
+		System.out.println("Given String have unique characters");
+		return true;
+	}
+
+	public String stringSorting(String s) {
+		char c[] = s.toCharArray();
+		Arrays.sort(c);
+		return String.valueOf(c);
+	}
+
+	/*Implement an algorithm to determine if a string has all unique characters. */
+	public Boolean uniqueCharInStringUsingHasMap(String s){
+
+		HashSet<String> set=new HashSet<String>();  
+
+		for(int i=0;i<s.length();i++) {
+			if(set.contains(s.substring(i, i+1))){
+				System.out.println("Given String doesnot have unique characters");
+				return false;
+			}
+			else {
+				set.add(s.substring(i, i+1));
+			}
+		}
+
+		/*To parse through the set
+		Iterator<String> itr = set.iterator();
+		while(itr.hasNext()) {
+			System.out.println(itr.next());
+		}
+		 */
+
+		System.out.println("Given String have unique characters");
+		return true;
+	}
+
+	/*
+	 * Write a method to replace all spaces in a string with ‘%20’.
+	 * */
+	public String replaceSpaceInString(String s) {
+		String replacedStr = s.replace(" ", "%20");
+		System.out.println("String " + s +" has been changed to " +  replacedStr);
+		return replacedStr;
+	}
+
+	/*
+	 * Write an algorithm such that if an element in an MxN matrix is 0, its entire row and column are
+	set to 0
+	 */
+	public void newMatrixCreationOnCondition(int[][] a, int n,int m) {
+		//function to check if 0 exists in a matrix
+		int[][] newMatrix = new int[n][m] ;
+		newMatrix = a;
+		
+		for(int i=0;i<n;i++){
+			for(int j=0;j<m;j++) {
+				if(a[i][j] == 0) {
+					System.out.println("in if i & j" + i + " "+ j);
+					newMatrix = replaceZeroMatrix(newMatrix, n, m, i, j);
+					System.out.println("a matrix");
+					displayMatrix(a,n,m);
+
+				}
+			}
+		}
+
+		displayMatrix(newMatrix,n,m);
+		//function to replace with entire ith row to 0 and entire jth column to 0 on encountering 0 at the position a[i,j]
+		//return a;
+	}
+
+
+	public int[][] replaceZeroMatrix(int[][] newMatrix,int n,int m, int row, int col) {
+		int[][] newMatrix1 = new int[n][m] ;
+		newMatrix1 = newMatrix;
+		for(int i = 0;i<n;i++) {
+			newMatrix1[i][col] = 0;
+		}
+		for(int j = 0;j<m;j++) {
+			newMatrix1[row][j] = 0;
+		}
+		displayMatrix(newMatrix1,n,m);
+
+		return newMatrix1;
+	}
+
+	public void displayMatrix(int[][] a, int n,int m) {
+		//function to check if 0 exists in a matrix
+		for(int i=0;i<n;i++){
+			for(int j=0;j<m;j++) {
+				System.out.print(a[i][j] + " ");
+			}
+			System.out.println("");
+		}
+	}
+
+	/*
+	public int[][] checkReturnPositionsInMatrix(int[][] a, int n, int m) {
+		int size = m*n;
+		ArrayList positionArr = new ArrayList();
+		//int[] positionArr = new int[m*n];
+
+		for(int i=0;i<n;i++){
+			for(int j=0;j<m;j++) {
+				if(a[i][j] == 0) {
+					//positionArr.add([i,j]);
+					//positionArr = addElement(i,j);
+				}
+			}
+		}
+
+		return a;
+	}*/
+
+}

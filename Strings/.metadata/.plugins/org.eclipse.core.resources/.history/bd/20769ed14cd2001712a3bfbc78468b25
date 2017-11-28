@@ -1,0 +1,13 @@
+
+public class MainClass {
+	public static void main(String args[]){
+		StringFunctions strFunc = new StringFunctions();
+		//strFunc.uniqueCharInString("Sweta");
+		//strFunc.uniqueCharInStringUsingHasMap("SwetaS");
+		//strFunc.replaceSpaceInString("Sweta Janagoudar is looking for SDE position");
+		
+		int arr[][] = new int[3][3];
+		arr[][]={{1,0,3},{2,4,5},{4,4,5}};  
+		strFunc.newMatrixCreationOnCondition(arr,3,3);
+	}
+}
